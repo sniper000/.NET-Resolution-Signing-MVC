@@ -1,4 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using ResolutionSigningSystem.Data;
 
 namespace ResolutionSigningSystem.Data
 {
@@ -10,52 +15,141 @@ namespace ResolutionSigningSystem.Data
         {
 
             context.Database.EnsureCreated();
-
-            string asdminRole = "Admin";
-            string memberRole = "Member";
+            string adminRole = "Admin";
+            string memberRole1 = "Board member 1";
+            string memberRole2 = "Board member 2";
+            string memberRole3 = "Board member 3";
+            string memberRole4 = "Board member 4";
+            string memberRole5 = "Board member 5";
             string password4all = "P@$$w0rd";
 
-            if (await roleManager.FindByNameAsync(asdminRole) == null)
+            if (await roleManager.FindByNameAsync(adminRole) == null)
             {
-                await roleManager.CreateAsync(new IdentityRole(asdminRole));
+                await roleManager.CreateAsync(new IdentityRole(adminRole));
             }
 
-            if (await roleManager.FindByNameAsync(memberRole) == null)
+            if (await roleManager.FindByNameAsync(memberRole1) == null)
             {
-                await roleManager.CreateAsync(new IdentityRole(memberRole));
+                await roleManager.CreateAsync(new IdentityRole(memberRole1));
             }
 
-            if (await userManager.FindByNameAsync("aa@aa.aa") == null)
+            if (await roleManager.FindByNameAsync(memberRole2) == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole(memberRole2));
+            }
+
+
+            if (await roleManager.FindByNameAsync(memberRole3) == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole(memberRole3));
+            }
+
+
+            if (await roleManager.FindByNameAsync(memberRole4) == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole(memberRole4));
+            }
+
+
+            if (await roleManager.FindByNameAsync(memberRole5) == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole(memberRole5));
+            }
+
+
+            if (await userManager.FindByNameAsync("a@a.a") == null)
             {
                 var user = new IdentityUser
                 {
-                    UserName = "aa@aa.aa",
-                    Email = "aa@aa.aa",
-                    PhoneNumber = "6902341234"
+                    UserName = "a@a.a",
+                    Email = "a@a.a"
                 };
 
                 var result = await userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     await userManager.AddPasswordAsync(user, password4all);
-                    await userManager.AddToRoleAsync(user, asdminRole);
+                    await userManager.AddToRoleAsync(user, adminRole);
                 }
             }
 
-            if (await userManager.FindByNameAsync("mm@mm.mm") == null)
+            if (await userManager.FindByNameAsync("1@1.1") == null)
             {
                 var user = new IdentityUser
                 {
-                    UserName = "mm@mm.mm",
-                    Email = "mm@mm.mm",
-                    PhoneNumber = "1112223333"
+                    UserName = "1@1.1",
+                    Email = "1@1.1"
                 };
 
                 var result = await userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     await userManager.AddPasswordAsync(user, password4all);
-                    await userManager.AddToRoleAsync(user, memberRole);
+                    await userManager.AddToRoleAsync(user, memberRole1);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("2@2.2") == null)
+            {
+                var user = new IdentityUser
+                {
+                    UserName = "2@2.2",
+                    Email = "2@2.2"
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password4all);
+                    await userManager.AddToRoleAsync(user, memberRole2);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("3@3.3") == null)
+            {
+                var user = new IdentityUser
+                {
+                    UserName = "3@3.3",
+                    Email = "3@3.3"
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password4all);
+                    await userManager.AddToRoleAsync(user, memberRole3);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("4@4.4") == null)
+            {
+                var user = new IdentityUser
+                {
+                    UserName = "4@4.4",
+                    Email = "4@4.4"
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password4all);
+                    await userManager.AddToRoleAsync(user, memberRole4);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("5@5.5") == null)
+            {
+                var user = new IdentityUser
+                {
+                    UserName = "5@5.5",
+                    Email = "5@5.5"
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password4all);
+                    await userManager.AddToRoleAsync(user, memberRole5);
                 }
             }
         }
